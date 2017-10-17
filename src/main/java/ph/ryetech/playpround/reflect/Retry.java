@@ -14,8 +14,6 @@ public class Retry {
 	public Map<String, Object> retryOnFailure(Object component, String methodName, int maxRetryCount,
 			LinkedHashMap<Class<?>, Object> arguments) {
 		final Map<String, Object> result = new HashMap<>();
-		result.put("tryCount", 0);
-
 		int attemptCount = 0;
 		while (++attemptCount <= maxRetryCount) {
 			try {
@@ -31,8 +29,7 @@ public class Retry {
 					try {
 						System.out.println(" Sleeping for 1 second...");
 						Thread.sleep(1000);
-					} catch (InterruptedException e1) {
-					}
+					} catch (InterruptedException e1) {}
 				} else {
 					System.out.println();
 				}
